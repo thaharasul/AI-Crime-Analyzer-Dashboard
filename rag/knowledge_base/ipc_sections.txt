@@ -1,0 +1,71 @@
+IPC SECTIONS REFERENCE - COMMON CRIME CATEGORIES
+
+Section 302 - Punishment for Murder
+Whoever commits murder shall be punished with death or imprisonment for
+life, and shall also be liable to a fine. Applies to Violent Crime /
+Homicide cases.
+
+Section 307 - Attempt to Murder
+Whoever does any act with the intention or knowledge that, if it caused
+death, would amount to murder, shall be punished with imprisonment for
+a term which may extend to ten years, and shall also be liable to a
+fine. Commonly cited in Violent Crime / Assault cases involving intent
+to kill.
+
+Section 323 - Punishment for Voluntarily Causing Hurt
+Applies to general Assault cases where the injury does not amount to
+grievous hurt. Punishable with imprisonment up to one year, or fine, or
+both.
+
+Section 379 - Punishment for Theft
+Whoever commits theft shall be punished with imprisonment of either
+description for a term which may extend to three years, or with fine,
+or both. Applies to Pickpocketing, Shoplifting, and general Theft
+category incidents.
+
+Section 380 - Theft in Dwelling House
+Theft committed in any building, tent, or vessel used as a human
+dwelling is punishable with imprisonment up to seven years. This is the
+primary section applied to Burglary cases.
+
+Section 392 - Punishment for Robbery
+Whoever commits robbery shall be punished with rigorous imprisonment
+for a term which may extend to ten years. If the robbery is committed
+on a highway between sunset and sunrise, the imprisonment may extend to
+fourteen years. Applies to Robbery incidents, especially those
+involving weapons.
+
+Section 411 - Dishonestly Receiving Stolen Property
+Applies to cases involving Vehicle Theft rings and resale of stolen
+goods, where a person knowingly receives or retains stolen property.
+
+Section 420 - Cheating and Dishonestly Inducing Delivery of Property
+Frequently applied to Online Fraud and Cybercrime cases where a victim
+is deceived into transferring money or property.
+
+Section 66C / 66D - Information Technology Act (Identity Theft and
+Cheating by Personation using Computer Resource)
+Applied alongside IPC 420 in Phishing and Identity Theft cases
+involving digital impersonation.
+
+Section 497 / Domestic Violence Act, 2005
+Domestic Violence cases are typically handled under the Protection of
+Women from Domestic Violence Act in conjunction with relevant IPC
+assault sections, depending on severity.
+
+Section 447 - Punishment for Criminal Trespass
+Whoever commits criminal trespass shall be punished with imprisonment
+of either description for a term which may extend to three months, or
+with fine, or both. Applies to Trespassing incidents under Public
+Order.
+
+Section 425 / 426 - Mischief
+Applies to Vandalism cases; whoever commits mischief causing damage to
+property shall be punished with imprisonment up to three months, or
+fine, or both, depending on the value of damage.
+
+NDPS Act, 1985 - Narcotic Drugs and Psychotropic Substances Act
+Governs Drug Possession and Drug Trafficking cases. Punishment scales
+with the quantity involved: small quantity, commercial quantity, and
+intermediate quantity each carry different sentencing bands, ranging
+from six months to over ten years for commercial quantities.

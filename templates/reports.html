@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% set active_page = 'reports' %}
+{% block page_title %}Report Generator{% endblock %}
+
+{% block content %}
+<div class="row g-3">
+    <div class="col-lg-4">
+        <div class="panel">
+            <h6 class="panel-title">CSV Export</h6>
+            <form id="csv-form" method="GET" action="{{ url_for('reports.export_csv') }}">
+                <div class="mb-2">
+                    <label class="form-label">Zone</label>
+                    <select class="form-select" name="zone">
+                        <option value="">All Zones</option>
+                        {% for z in zones %}<option value="{{ z }}">{{ z }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Category</label>
+                    <select class="form-select" name="category">
+                        <option value="">All Categories</option>
+                        {% for c in categories %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" name="status">
+                        <option value="">All Statuses</option>
+                        <option value="Solved">Solved</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Under Investigation">Under Investigation</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-primary w-100">
+                    <i class="bi bi-filetype-csv"></i> Download CSV
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="panel">
+            <div class="d-flex justify-content-between align-items-center">
+                <h6 class="panel-title mb-0">Executive Briefing (AI-Generated)</h6>
+                <div>
+                    <button id="preview-briefing" class="btn btn-sm btn-outline-secondary">
+                        <i class="bi bi-eye"></i> Preview
+                    </button>
+                    <a href="{{ url_for('reports.export_pdf') }}" class="btn btn-sm btn-primary">
+                        <i class="bi bi-file-earmark-pdf"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            <div id="briefing-preview" class="briefing-preview mt-3 text-muted">
+                Click "Preview" to run the Analyst, Recommendation, and Coordinator agents and see the briefing content before downloading the PDF.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.getElementById('preview-briefing').addEventListener('click', async () => {
+    const box = document.getElementById('briefing-preview');
+    box.innerHTML = '<em>Running Analyst + Recommendation agents...</em>';
+    const res = await fetch("{{ url_for('reports.briefing_preview') }}");
+    const data = await res.json();
+
+    let html = `<p><strong>Total Crimes:</strong> ${data.analysis.total_crimes}</p>`;
+    html += '<p><strong>Top Categories:</strong> ' + data.analysis.top_categories.map(c => `${c.category} (${c.count})`).join(', ') + '</p>';
+    html += '<p><strong>Busiest Zones:</strong> ' + data.analysis.busiest_zones.map(z => `${z.zone} (${z.count})`).join(', ') + '</p>';
+    if (data.analysis.zone_anomalies.length) {
+        html += '<p><strong>Anomalies:</strong> ' + data.analysis.zone_anomalies.map(a => `${a.zone} +${a.increase_pct}%`).join(', ') + '</p>';
+    }
+    html += `<hr><p><strong>AI Recommendations:</strong></p><pre class="briefing-recommendation">${data.recommendation}</pre>`;
+    box.innerHTML = html;
+});
+</script>
+{% endblock %}

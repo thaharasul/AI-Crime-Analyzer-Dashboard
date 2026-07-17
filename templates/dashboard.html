@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% set active_page = 'dashboard' %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="hero-panel">
+    <div class="hero-eyebrow"><i class="bi bi-graph-up-arrow"></i> Command dashboard</div>
+    <h1 class="hero-title">A clearer view of crime trends, risk zones, and response priorities.</h1>
+    <p class="hero-copy">Use the panels below to track incidents, inspect hotspots, and move from raw reports to actionable decisions faster.</p>
+    <div class="hero-actions">
+        <div class="hero-chip"><i class="bi bi-person-badge"></i> Signed in as <strong>{{ session.get('username', 'Officer') }}</strong></div>
+        <div class="hero-chip"><i class="bi bi-lightning-charge-fill"></i> Live analytics refreshed from the current dataset</div>
+    </div>
+</div>
+
+<div class="row g-3 stat-row">
+    <div class="col-6 col-xl-2-4">
+        <div class="stat-card">
+            <div class="stat-icon bg-primary-subtle text-primary"><i class="bi bi-clipboard-data"></i></div>
+            <div class="stat-value" id="stat-total">-</div>
+            <div class="stat-label">Total Crimes</div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-2-4">
+        <div class="stat-card">
+            <div class="stat-icon bg-success-subtle text-success"><i class="bi bi-check-circle"></i></div>
+            <div class="stat-value" id="stat-solved">-</div>
+            <div class="stat-label">Solved Cases</div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-2-4">
+        <div class="stat-card">
+            <div class="stat-icon bg-warning-subtle text-warning"><i class="bi bi-hourglass-split"></i></div>
+            <div class="stat-value" id="stat-pending">-</div>
+            <div class="stat-label">Pending Cases</div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-2-4">
+        <div class="stat-card">
+            <div class="stat-icon bg-danger-subtle text-danger"><i class="bi bi-calendar-day"></i></div>
+            <div class="stat-value" id="stat-today">-</div>
+            <div class="stat-label">Today's Cases</div>
+        </div>
+    </div>
+    <div class="col-6 col-xl-2-4">
+        <div class="stat-card">
+            <div class="stat-icon bg-info-subtle text-info"><i class="bi bi-tags"></i></div>
+            <div class="stat-value" id="stat-categories">-</div>
+            <div class="stat-label">Crime Categories</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mt-1">
+    <div class="col-lg-4">
+        <div class="panel">
+            <h6 class="panel-title">Crime Distribution</h6>
+            <canvas id="categoryPieChart" height="230"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <h6 class="panel-title">Crimes by Zone</h6>
+            <canvas id="zoneBarChart" height="230"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel">
+            <h6 class="panel-title">Case Status Breakdown</h6>
+            <canvas id="statusChart" height="230"></canvas>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mt-1">
+    <div class="col-lg-7">
+        <div class="panel">
+            <h6 class="panel-title">Monthly Crime Trend</h6>
+            <canvas id="trendLineChart" height="200"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="panel">
+            <h6 class="panel-title">Top Dangerous Locations</h6>
+            <div id="dangerous-locations-list" class="danger-list"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mt-1">
+    <div class="col-12">
+        <div class="panel">
+            <h6 class="panel-title">Interactive Crime Map</h6>
+            <div id="crimeMap"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}
