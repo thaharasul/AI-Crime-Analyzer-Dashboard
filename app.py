@@ -1,7 +1,3 @@
-
-from api.routes_assistant import assistant_bp
-
-app.register_blueprint(assistant_bp)
 from flask import Flask, redirect, url_for
 
 from config import Config
@@ -28,7 +24,7 @@ def create_app():
     app.register_blueprint(auth_bp)
     app.register_blueprint(dashboard_bp)
     app.register_blueprint(prediction_bp)
-   # app.register_blueprint(assistant_bp)
+    app.register_blueprint(assistant_bp)   # ✅ enabled again
     app.register_blueprint(reports_bp)
 
     @app.route("/")
@@ -40,6 +36,7 @@ def create_app():
 
 
 app = create_app()
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=Config.DEBUG)
