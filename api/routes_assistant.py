@@ -2,7 +2,6 @@
 
 from flask import Blueprint, render_template, request, jsonify
 
-from services import assistant_service
 from api.routes_auth import login_required
 
 assistant_bp = Blueprint("assistant", __name__)
@@ -20,10 +19,11 @@ SUGGESTED_QUERIES = [
 def assistant_page():
     return render_template("assistant.html", suggested_queries=SUGGESTED_QUERIES)
 
-
 @assistant_bp.route("/api/assistant/ask", methods=["POST"])
 @login_required
 def ask():
+    from services import assistant_service
+
     payload = request.get_json(force=True)
     question = (payload.get("question") or "").strip()
 
