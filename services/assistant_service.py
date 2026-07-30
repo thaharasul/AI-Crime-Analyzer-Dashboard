@@ -1,4 +1,4 @@
-from rag.retriever import retrieve
+
 from services import gemini_service
 
 SYSTEM_INSTRUCTION = (
@@ -12,6 +12,8 @@ SYSTEM_INSTRUCTION = (
 
 
 def answer_question(question: str, top_k: int = 4) -> dict:
+    from rag.retriever import retrieve
+
     hits = retrieve(question, top_k=top_k)
 
     if not hits:
