@@ -1,5 +1,7 @@
 
+from api.routes_assistant import assistant_bp
 
+app.register_blueprint(assistant_bp)
 from flask import Flask, redirect, url_for
 
 from config import Config
